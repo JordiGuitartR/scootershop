@@ -15,6 +15,6 @@ class Comanda extends Model
 
     public function productes()
     {
-           return $this->hasMany(Producte::class);
+           return $this->belongsToMany(Producte::class,'comanda_producte');
     }
 }

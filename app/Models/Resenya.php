@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Resenya extends Model
 {
-    protected $table="producte";
+    protected $table="resenya";
 
-    public function comandes()
+    public function productes()
     {
-           return $this->belongsToMany(Comanda::class);
+        return $this->belongsTo(Producte::class);
     }
 }
