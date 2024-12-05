@@ -12,6 +12,18 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    protected $table="user";
+
+    public function comandes()
+    {
+        return $this->hasMany(Comanda::class);
+    }
+
+    public function resenyes()
+    {
+        return $this->hasMany(Resenya::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
