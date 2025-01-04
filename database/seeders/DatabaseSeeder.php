@@ -26,17 +26,47 @@ class DatabaseSeeder extends Seeder
             'admin'=> true,
         ]);
 
-        for($i=0;$i<10;$i++){
-            DB::table('categoria')->insert(['nom_categoria' => fake()->name()]);
+        
+        DB::table('categoria')->insert(['nom_categoria' => "Deck"]);
+        DB::table('categoria')->insert(['nom_categoria' => "Bar"]);
+        DB::table('categoria')->insert(['nom_categoria' => "Wheel"]);
+        DB::table('categoria')->insert(['nom_categoria' => "Fork"]);
+        DB::table('categoria')->insert(['nom_categoria' => "Grip"]);
 
-        }
+        
 
-        for($i=0;$i<10;$i++){
-            DB::table('producte')->insert(['nom' => fake()->name(),'descripcio'=>fake()->text(),
-            'preu'=>fake()->numberBetween(50,250),
-            'categoria_id'=>fake()->numberBetween(1,10),
-            'marca'=>fake()->name()]);
-        }
+       
+        DB::table('producte')->insert(['nom' => "Tilt Formula Deck",'descripcio'=>fake()->text(),
+        'preu'=>fake()->numberBetween(50,250),
+        'categoria_id'=>1]);
+        DB::table('producte')->insert(['nom' => "Ethic Lindworm Deck",'descripcio'=>fake()->text(),
+        'preu'=>fake()->numberBetween(50,250),
+        'categoria_id'=>1]);
+        DB::table('producte')->insert(['nom' => "North Campus Bar",'descripcio'=>fake()->text(),
+        'preu'=>fake()->numberBetween(50,250),
+        'categoria_id'=>2]);
+        DB::table('producte')->insert(['nom' => "Tilt Selects Bar",'descripcio'=>fake()->text(),
+        'preu'=>fake()->numberBetween(50,250),
+        'categoria_id'=>2]);
+        DB::table('producte')->insert(['nom' => "River Naturals Wheels",'descripcio'=>fake()->text(),
+        'preu'=>fake()->numberBetween(50,250),
+        'categoria_id'=>3]);
+        DB::table('producte')->insert(['nom' => "Eagle Fly Wheels",'descripcio'=>fake()->text(),
+        'preu'=>fake()->numberBetween(50,250),
+        'categoria_id'=>3]);
+        DB::table('producte')->insert(['nom' => "Prime Maxime Fork",'descripcio'=>fake()->text(),
+        'preu'=>fake()->numberBetween(50,250),
+        'categoria_id'=>4]);
+        DB::table('producte')->insert(['nom' => "North Nada Fork",'descripcio'=>fake()->text(),
+        'preu'=>fake()->numberBetween(50,250),
+        'categoria_id'=>4]);
+        DB::table('producte')->insert(['nom' => "Hellagrip Classic",'descripcio'=>fake()->text(),
+        'preu'=>fake()->numberBetween(50,250),
+        'categoria_id'=>5]);
+        DB::table('producte')->insert(['nom' => "Skatepro Grip",'descripcio'=>fake()->text(),
+        'preu'=>fake()->numberBetween(50,250),
+        'categoria_id'=>5]);
+        
 
         for($i=0;$i<10;$i++){
             DB::table('comanda')->insert(['user_id' => fake()->numberBetween(1,10), 

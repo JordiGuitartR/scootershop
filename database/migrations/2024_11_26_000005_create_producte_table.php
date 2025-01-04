@@ -20,7 +20,6 @@ return new class extends Migration
             ->constrained(table:'categoria')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->string('marca');
             
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
