@@ -7,7 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Comanda extends Model
 {
     protected $table="comanda";
+    protected $fillable = [
+       'user_id',         // Afegit per permetre l'assignació massiva
+       'data_comanda',
+       'estat',
+       'total',
+   ];
  
+    public function comandaProducte()
+    {
+        return $this->hasMany(ComandaProducte::class, 'comanda_id');
+    }
+
     public function usuari()
     {
            return $this->belongsTo(User::class);

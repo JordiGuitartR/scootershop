@@ -3,12 +3,18 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProducteController;
+use App\Http\Controllers\ComandaController;
 
 // Ruta principal per a la home page
 Route::get('/', [ProducteController::class, 'home'])->name('home');
 
 Route::get('/producte/{id}', [ProducteController::class, 'show'])->name('producte.show');
 
+Route::get('/cart', [ComandaController::class, 'cart'])->name('cart');
+Route::get('/cart/add/{id}', [ComandaController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart/remove/{id}', [ComandaController::class, 'removeFromCart'])->name('cart.remove');
+
+Route::post('/cart/update/{id}/{action}', [ComandaController::class, 'updateQuantity'])->name('cart.update');
 
 // Ruta per al dashboard
 Route::get('/dashboard', function () {

@@ -21,6 +21,12 @@
                     <p class="text-lg font-bold mb-4">{{ __('Preu:') }} {{ $producte->preu }} €</p>
                     <p class="text-gray-600">{{ __('Categoria:') }}
                         {{ $producte->categoria ? $producte->categoria->nom_categoria : __('Sense categoria') }}</p>
+
+                    <a href="{{ route('cart.add', $producte->id) }}"
+                        class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                        {{ __('Add to cart') }}
+                    </a>
+
                 </div>
             @else
                 <div class="bg-red-100 text-red-800 p-6 rounded-lg shadow-md">
