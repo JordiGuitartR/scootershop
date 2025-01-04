@@ -8,9 +8,9 @@ class Categoria extends Model
 {
     protected $table="categoria";
  
-    public function productes()
+    public function producte()
     {
-           return $this->hasMany(Producte::class);
+           return $this->hasMany(Producte::class,'categoria_id');
     }
 
 }

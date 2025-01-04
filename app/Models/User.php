@@ -13,12 +13,12 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
 
-    public function comandes()
+    public function comanda()
     {
         return $this->hasMany(Comanda::class);
     }
 
-    public function resenyes()
+    public function resenya()
     {
         return $this->hasMany(Resenya::class);
     }

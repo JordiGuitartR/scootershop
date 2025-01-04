@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comanda extends Model
 {
-    protected $table="comandes";
+    protected $table="comanda";
  
-    public function usuaris()
+    public function usuari()
     {
            return $this->belongsTo(User::class);
     }
 
-    public function productes()
+    public function producte()
     {
            return $this->belongsToMany(Producte::class,'comanda_producte');
     }

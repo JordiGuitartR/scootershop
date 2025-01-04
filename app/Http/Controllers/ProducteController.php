@@ -8,6 +8,24 @@ use Illuminate\Http\Request;
 
 class ProducteController extends Controller
 {
+
+    public function home()
+    {
+        $productes = Producte::take(10)->get();
+        return view('home', compact('productes'));
+    }
+
+    public function show($id)
+    {
+        $producte = Producte::with('categoria')->find($id);
+    
+        if (!$producte) {
+            return view('producte', ['producte' => null]);
+        }
+    
+        return view('producte', compact('producte'));
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -32,13 +50,6 @@ class ProducteController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Producte $producte)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

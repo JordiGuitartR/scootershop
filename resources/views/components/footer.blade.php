@@ -1,13 +1,10 @@
 <footer class="w-screen h-20 bg-gray-700 text-white text-center py-3 fixed bottom-0">
   <div class="">
-    Web ideat i desenvolupat per l'estudiant Jordi Guitart Roca | 
-    <a href="http://multimedia.uvic.cat/" target="_blank">
-      Grau en Multimèdia, Aplicacions i Videojocs
-    </a>
-    <a href="https://www.uvic.cat/centre/fcte">(Facultat de Ciències, Tecnologia i Enginyeries)</a>.
+    Jordi Guitart Roca | UVIC
+   
   </div>
   <div class="">
-    Copyright - GuitartDev Scootershop © {{ now()->year }}
+    Copyright | Guitart Scooter Shop © {{ now()->year }}
   </div>
 
 </footer>

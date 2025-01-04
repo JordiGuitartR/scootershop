@@ -34,8 +34,6 @@ class DatabaseSeeder extends Seeder
         DB::table('categoria')->insert(['nom_categoria' => "Grip"]);
 
         
-
-       
         DB::table('producte')->insert(['nom' => "Tilt Formula Deck",'descripcio'=>fake()->text(),
         'preu'=>fake()->numberBetween(50,250),
         'categoria_id'=>1]);

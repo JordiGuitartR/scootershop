@@ -7,18 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Producte extends Model
 {
     protected $table="producte";
+    protected $fillable = ['nom', 'descripcio', 'preu', 'categoria_id'];
 
-    public function comandes()
+    public function comanda()
     {
            return $this->belongsToMany(Comanda::class,'comanda_producte');
     }
 
-    public function categories()
+    public function categoria()
     {
-           return $this->belongsTo(Categoria::class);
+           return $this->belongsTo(Categoria::class,'categoria_id');
     }
 
-    public function resenyes()
+    public function resenya()
     {
            return $this->hasMany(Resenya::class);
     }
