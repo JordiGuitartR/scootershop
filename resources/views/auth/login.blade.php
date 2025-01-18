@@ -1,10 +1,10 @@
 <x-guest-layout>
     <div class="py-12">
-        <div class="bg-white p-10 rounded-lg shadow-md flex items-start space-x-6 mb-12 mx-20">
+        <div align="center" class="bg-white p-10 rounded-lg shadow-md mb-12 mx-80">
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
 
-            <form method="POST" action="{{ route('login') }}">
+            <form  class="max-w-80" method="POST" action="{{ route('login') }}">
                 @csrf
 
                 <!-- Email Address -->

@@ -57,7 +57,7 @@
                     </table>
 
                     <div class="mt-6">
-                        <p class="text-lg font-bold">{{ __('Order Status:') }} {{ $comanda->estat }}</p>
+                        {{-- <p class="text-lg font-bold">{{ __('Order Status:') }} {{ $comanda->estat }}</p> --}}
                         <p class="text-lg font-bold">{{ __('Total:') }} {{ $comanda->total }} €</p>
                     </div>
                 </div>

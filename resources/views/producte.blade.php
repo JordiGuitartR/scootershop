@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Producte') }}
+            {{ __('Product') }}
         </h2>
     </x-slot>
 
@@ -40,11 +40,11 @@
                         <!-- Si no es admin, mostrar solo los datos -->
                         <h3 class="text-2xl font-bold mb-4">{{ $producte->nom }}</h3>
                         <p class="text-gray-700 mb-4">{{ $producte->descripcio }}</p>
-                        <p class="text-lg font-bold mb-4">{{ __('Preu:') }} {{ $producte->preu }} €</p>
+                        <p class="text-lg font-bold mb-4">{{ __('Price:') }} {{ $producte->preu }} €</p>
                     @endif
 
                     <!-- Categoria del producto -->
-                    <p class="text-gray-600">{{ __('Categoria:') }}
+                    <p class="text-gray-600">{{ __('Category:') }}
                         {{ $producte->categoria ? $producte->categoria->nom_categoria : __('Sense categoria') }}</p>
 
                     @auth
@@ -56,7 +56,7 @@
                 </div>
             @else
                 <div class="bg-red-100 text-red-800 p-6 rounded-lg shadow-md">
-                    {{ __('No s’ha seleccionat cap producte.') }}
+                    {{ __('No product has been selected.') }}
                 </div>
             @endif
         </div>

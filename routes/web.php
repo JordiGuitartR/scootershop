@@ -8,6 +8,9 @@ use App\Http\Controllers\ComandaController;
 // Ruta principal per a la home page
 Route::get('/', [ProducteController::class, 'home'])->name('home');
 
+Route::get('/lang/{idioma}', 'App\Http\Controllers\LocalizationController@index')
+    ->where('idioma', 'ca|en|es|fr');
+
 Route::get('/producte/{id}', [ProducteController::class, 'show'])->name('producte.show');
 
 Route::get('/cart', [ComandaController::class, 'cart'])->name('cart');
