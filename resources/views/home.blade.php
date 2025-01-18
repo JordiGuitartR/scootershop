@@ -21,15 +21,17 @@
                 <div>
                     <img src="{{ asset('images/' . $producte->id . '.jpg') }}" alt="{{ $producte->nom }}" class="w-full h-32 object-contain mb-4 rounded-md">
                     <h3 class="text-lg font-semibold">{{ $producte->nom }}</h3>
-                    <p class="text-sm text-gray-600 mb-2">{{ $producte->descripcio }}</p>
+                    
                 </div>
                 <div class="flex items-center justify-between mt-4">
                     <p class="text-lg font-bold text-gray-800">{{ $producte->preu }} €</p>
+                    @auth
                     <a href="{{ route('cart.add', $producte->id) }}"
-                        class=" bg-green-500 text-white px-1.5 py-1 rounded hover:bg-green-600">
+                        class=" bg-gray-500 text-white px-1.5 py-1 rounded hover:bg-gray-400">
                         {{ __('Add') }}
                     </a>
-                    <a href="{{ route('producte.show', $producte->id) }}" class="bg-blue-500 text-white px-1.5 py-1 rounded hover:bg-blue-600">
+                    @endauth
+                    <a href="{{ route('producte.show', $producte->id) }}" class="bg-gray-500 text-white px-1.5 py-1 rounded hover:bg-gray-400">
                         {{ __('See more') }}
                     </a>
                 </div>

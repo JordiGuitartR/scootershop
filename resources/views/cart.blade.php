@@ -6,14 +6,14 @@
     </x-slot>
 
     <div class="py-8">
-        <div class="max-w-3xl mb-20 mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-4xl mb-20 mx-auto sm:px-6 lg:px-8">
             @if ($productes && $productes->count())
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <table class="w-full">
                         <thead>
                             <tr>
-                                <th class="text-left">{{ __('') }}</th>
                                 <th class="text-left">{{ __('Product') }}</th>
+                                <th class="text-left">{{ __('Name') }}</th>
                                 <th class="text-left">{{ __('Price') }}</th>
                                 <th class="text-left">{{ __('Quantity') }}</th>
                                 <th></th>
@@ -22,25 +22,25 @@
                         <tbody>
                             @foreach ($productes as $producte)
                                 <tr>
-                                    <td><img src="{{ asset('images/' . $producte->producte->id . '.jpg') }}" class="w-16 h-16 object-contain"></td>
+                                    <td><img src="{{ asset('images/' . $producte->producte->id . '.jpg') }}" class="w-12 h-12 object-contain"></td>
                                     <td>{{ $producte->producte->nom }}</td>
                                     <td>{{ $producte->preu_unitari }} €</td>
                                     <td class="flex items-center space-x-4">
                                         <!-- Botó per disminuir -->
                                         <form action="{{ route('cart.update', ['id' => $producte->producte_id, 'action' => 'decrement']) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="bg-gray-200 text-black px-1.5 py-0.25 mt-5 rounded hover:bg-gray-400">
+                                            <button type="submit" class="bg-gray-300 text-black px-1.5 py-0.25 mt-2 rounded hover:bg-gray-400">
                                                 -
                                             </button>
                                         </form>
                                     
                                         <!-- Quantitat actual -->
-                                        <span class="mt-5">{{ $producte->quantitat }}</span>
+                                        <span class="mt-3">{{ $producte->quantitat }}</span>
                                     
                                         <!-- Botó per augmentar -->
                                         <form action="{{ route('cart.update', ['id' => $producte->producte_id, 'action' => 'increment']) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="bg-gray-200 text-black px-1.5 py-0.25 mt-5 rounded hover:bg-gray-400">
+                                            <button type="submit" class="bg-gray-300 text-black px-1.5 py-0.25 mt-2 rounded hover:bg-gray-400">
                                                 +
                                             </button>
                                         </form>
@@ -62,9 +62,9 @@
                     </div>
                 </div>
             @else
-                <div class="bg-gray-100 text-gray-600 p-6 rounded-lg shadow-md">
-                    {{ __('Your cart is empty.') }}
-                </div>
+            <div class="bg-red-100 text-red-800 p-6 rounded-lg shadow-md ">
+                {{ __('Your cart is empty.') }}
+            </div>
             @endif
         </div>
     </div>

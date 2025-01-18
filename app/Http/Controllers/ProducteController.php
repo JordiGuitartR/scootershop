@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producte;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ProducteController extends Controller
 {
-
     public function home()
     {
         $productes = Producte::take(10)->get();
@@ -18,53 +16,39 @@ class ProducteController extends Controller
     public function show($id)
     {
         $producte = Producte::with('categoria')->find($id);
-    
+
         if (!$producte) {
             return view('producte', ['producte' => null]);
         }
-    
+
         return view('producte', compact('producte'));
-    }
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Producte $producte)
-    {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Producte $producte)
+    public function update(Request $request, $id)
     {
-        //
+        // Validación de los datos del producto
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'descripcio' => 'required|string|max:1000',
+            'preu' => 'required|numeric',
+        ]);
+
+        // Buscar el producto por ID
+        $producte = Producte::findOrFail($id);
+
+        // Actualizar los datos del producto
+        $producte->update([
+            'nom' => $request->nom,
+            'descripcio' => $request->descripcio,
+            'preu' => $request->preu,
+        ]);
+
+        // Redirigir con mensaje de éxito
+        return redirect()->route('producte.show', $producte->id)
+                         ->with('success', 'Producte actualitzat correctament!');
     }
 
     /**
@@ -75,3 +59,4 @@ class ProducteController extends Controller
         //
     }
 }
+

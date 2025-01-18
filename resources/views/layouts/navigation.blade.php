@@ -21,9 +21,11 @@
                     <x-nav-link :href="route('producte.show', ['id' => 0])" :active="request()->routeIs('producte.show')">
                         {{ __('Producte') }}
                     </x-nav-link>
+                    @auth
                     <x-nav-link :href="route('cart')" :active="request()->routeIs('cart')">
                         {{ __('Cart') }}
                     </x-nav-link>
+                    @endauth
                 </div>
             </div>
 

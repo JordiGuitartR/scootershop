@@ -16,6 +16,9 @@ Route::get('/cart/remove/{id}', [ComandaController::class, 'removeFromCart'])->n
 
 Route::post('/cart/update/{id}/{action}', [ComandaController::class, 'updateQuantity'])->name('cart.update');
 
+Route::put('/producte/{id}', [ProducteController::class, 'update'])->name('productes.update');
+
+
 // Ruta per al dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
