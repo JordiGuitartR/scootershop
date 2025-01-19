@@ -29,24 +29,20 @@ class ProducteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validación de los datos del producto
         $request->validate([
             'nom' => 'required|string|max:255',
             'descripcio' => 'required|string|max:1000',
             'preu' => 'required|numeric',
         ]);
 
-        // Buscar el producto por ID
         $producte = Producte::findOrFail($id);
 
-        // Actualizar los datos del producto
         $producte->update([
             'nom' => $request->nom,
             'descripcio' => $request->descripcio,
             'preu' => $request->preu,
         ]);
 
-        // Redirigir con mensaje de éxito
         return redirect()->route('producte.show', $producte->id)
                          ->with('success', 'Producte actualitzat correctament!');
     }

@@ -14,7 +14,6 @@
             </div>
         </div>
 
-        <!-- Product Grid -->
         <div class="grid grid-cols-5 gap-4  mb-12 mx-4 p-12 bg-gray-100 rounded-lg">
             @foreach($productes as $producte)
             <div class="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between relative">

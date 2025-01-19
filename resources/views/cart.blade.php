@@ -26,7 +26,7 @@
                                     <td>{{ $producte->producte->nom }}</td>
                                     <td>{{ $producte->preu_unitari }} €</td>
                                     <td class="flex items-center space-x-4">
-                                        <!-- Botó per disminuir -->
+                                        
                                         <form action="{{ route('cart.update', ['id' => $producte->producte_id, 'action' => 'decrement']) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="bg-gray-300 text-black px-1.5 py-0.25 mt-2 rounded hover:bg-gray-400">
@@ -34,10 +34,8 @@
                                             </button>
                                         </form>
                                     
-                                        <!-- Quantitat actual -->
                                         <span class="mt-3">{{ $producte->quantitat }}</span>
                                     
-                                        <!-- Botó per augmentar -->
                                         <form action="{{ route('cart.update', ['id' => $producte->producte_id, 'action' => 'increment']) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="bg-gray-300 text-black px-1.5 py-0.25 mt-2 rounded hover:bg-gray-400">

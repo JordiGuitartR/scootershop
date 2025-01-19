@@ -8,7 +8,7 @@ class Comanda extends Model
 {
     protected $table="comanda";
     protected $fillable = [
-       'user_id',         // Afegit per permetre l'assignació massiva
+       'user_id',         
        'data_comanda',
        'estat',
        'total',

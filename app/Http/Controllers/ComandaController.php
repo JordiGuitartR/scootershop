@@ -11,25 +11,24 @@ class ComandaController extends Controller
 
     public function addToCart($producteId)
 {
-    $userId = auth()->id(); // Assumeix que l'usuari està autenticat
+    $userId = auth()->id(); 
 
-    // Obtenir la comanda actual o crear-ne una de nova
+    
     $comanda = \App\Models\Comanda::firstOrCreate(
         ['user_id' => $userId, 'estat' => 'pendent'],
         ['data_comanda' => now(), 'total' => 0]
     );
 
-    // Verificar si el producte ja és al carretó
+   
     $comandaProducte = \App\Models\ComandaProducte::where('comanda_id', $comanda->id)
         ->where('producte_id', $producteId)
         ->first();
 
     if ($comandaProducte) {
-        // Incrementar la quantitat
+       
         $comandaProducte->increment('quantitat');
         $comandaProducte->update(['preu_unitari' => $comandaProducte->preu_unitari]);
     } else {
-        // Afegir un nou producte al carretó
         $producte = \App\Models\Producte::findOrFail($producteId);
 
         \App\Models\ComandaProducte::create([
@@ -40,7 +39,6 @@ class ComandaController extends Controller
         ]);
     }
 
-    // Recalcular el total de la comanda
     $this->updateComandaTotal($comanda);
 
     return redirect()->route('cart');
@@ -48,29 +46,29 @@ class ComandaController extends Controller
 
 public function updateQuantity($id, $action)
 {
-    $userId = auth()->id(); // Assumeix que l'usuari està autenticat
+    $userId = auth()->id(); 
 
-    // Obtenir la comanda activa
+    
     $comanda = \App\Models\Comanda::where('user_id', $userId)
         ->where('estat', 'pendent')
         ->firstOrFail();
 
-    // Obtenir el producte del carretó
+    
     $comandaProducte = \App\Models\ComandaProducte::where('comanda_id', $comanda->id)
         ->where('producte_id', $id)
         ->firstOrFail();
 
-    // Augmentar o disminuir la quantitat
+    
     if ($action === 'increment') {
         $comandaProducte->increment('quantitat');
     } elseif ($action === 'decrement' && $comandaProducte->quantitat > 1) {
         $comandaProducte->decrement('quantitat');
     } elseif ($action === 'decrement' && $comandaProducte->quantitat == 1) {
-        // Si la quantitat arriba a 0, elimina el producte
+        
         $comandaProducte->delete();
     }
 
-    // Recalcular el total de la comanda
+    
     $this->updateComandaTotal($comanda);
 
     return redirect()->route('cart');
@@ -79,9 +77,9 @@ public function updateQuantity($id, $action)
 
 public function cart()
 {
-    $userId = auth()->id(); // Assumeix que l'usuari està autenticat
+    $userId = auth()->id(); 
 
-    // Obtenir la comanda actual
+    
     $comanda = \App\Models\Comanda::where('user_id', $userId)
         ->where('estat', 'pendent')
         ->first();
@@ -90,7 +88,6 @@ public function cart()
         return view('cart', ['productes' => [], 'comanda' => null]);
     }
 
-    // Obtenir els productes del carretó
     $productes = \App\Models\ComandaProducte::with('producte')
         ->where('comanda_id', $comanda->id)
         ->get();
@@ -100,7 +97,7 @@ public function cart()
 
 public function removeFromCart($producteId)
 {
-    $userId = auth()->id(); // Assumeix que l'usuari està autenticat
+    $userId = auth()->id();
 
     $comanda = \App\Models\Comanda::where('user_id', $userId)
         ->where('estat', 'pendent')
@@ -111,7 +108,7 @@ public function removeFromCart($producteId)
             ->where('producte_id', $producteId)
             ->delete();
 
-        // Recalcular el total de la comanda
+        
         $this->updateComandaTotal($comanda);
     }
 
